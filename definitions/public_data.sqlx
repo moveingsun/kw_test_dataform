@@ -1,0 +1,24 @@
+config {
+  type: "table",
+    description: "This table select data from public database",
+  columns: {
+    block_height: "The block height",
+    block_timestamp: "Timestamp when the block generated",
+    block_timestamp_truncated: "BLock timestamp with six digit percision",
+    event_type: "event type, couuld be rewards or commissioin",
+    block_event_type: "event type"
+  },
+  schema: "public_data",
+
+  
+}
+
+CREATE OR REPLACE TABLE public_data.block_chain AS
+
+select 
+    block_height, 
+    block_timestamp, 
+    block_timestamp_truncated, 
+    event_type, 
+    block_event_type
+from bigquery-public-data.crypto_band.block_events limit 1000000
