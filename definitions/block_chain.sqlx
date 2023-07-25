@@ -1,6 +1,14 @@
 config {
   type: "table",
-    description: "This table select data from public database",
+  bigquery: {
+    partitionBy: "TIMESTAMP_TRUNC(block_timestamp_truncated, HOUR)",
+    partitionExpirationDays: 3,
+  },
+  description: "This table select data from public database",
+  assertions: {
+    nonNull: ["block_height", "block_timestamp_truncated"],
+    uniqueKey: ["block_height"]
+  },
   columns: {
     block_height: "The block height",
     block_timestamp: "Timestamp when the block generated",
@@ -9,11 +17,7 @@ config {
     block_event_type: "event type"
   },
   schema: "public_data",
-
-  
 }
-
-CREATE OR REPLACE TABLE public_data.block_chain AS
 
 select 
     block_height, 
@@ -21,4 +25,4 @@ select
     block_timestamp_truncated, 
     event_type, 
     block_event_type
-from bigquery-public-data.crypto_band.block_events limit 1000000
+from bigquery-public-data.crypto_band.block_events limit 100000000

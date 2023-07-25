@@ -3,7 +3,6 @@ config {
 }
 
 SELECT
-  fruit,
-  SUM(count) as count
+  title,
+  filename
 FROM ${ref("quickstart-source")}
-GROUP BY 1
