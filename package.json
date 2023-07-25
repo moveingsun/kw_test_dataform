@@ -1,0 +1,6 @@
+{
+  "name": "kw_test_public_git",
+  "dependencies": {
+    "@dataform/core": "2.4.2"
+  }
+}

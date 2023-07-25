@@ -1,0 +1,8 @@
+{
+  "defaultSchema": "dataform",
+  "assertionSchema": "dataform_assertions",
+  "warehouse": "bigquery",
+  "defaultDatabase": "wf-gcp-us-data-services-sbx",
+  "defaultLocation": "US"
+}
+    
